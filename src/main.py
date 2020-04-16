@@ -12,6 +12,6 @@ def main():
    
       store.printItems()
 
-   #print('Hello World!')
+   print('Hello World!')
 
 main()
