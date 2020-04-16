@@ -1,0 +1,48 @@
+{
+    "player": {
+        "name": "",
+        "major": "",
+        "lvl": 1,
+        "exp": 0,
+        "atk": 5,
+        "def": 5,
+        "crit": 10
+    },
+    "npc": {
+        "Luis Ortiz": {
+            "atk": 15,
+            "def": 20,
+            "crit": 15,
+            "attacks": [
+                {
+                    "name": "Capstone",
+                    "desc": "Luis Ortiz te tira con todo el peso del universo",
+                    "effect": "sadness",
+                    "atkmod": 1.3
+                }
+            ],
+            "dialog": [
+                {
+                    "opt": "Que es la que profe",
+                    "res:": "*Luis Ortiz te tira una coca cola"
+                },
+                {
+                    "opt": "Profe corrige mi trabajo!",
+                    "res:": "Tu estas en capstone? A no, pues lee el SRS hehehe"
+                }
+            ]
+        }
+    },
+    "items": [
+        {
+            "name": "usb",
+            "desc": "Raises attack for 1 turn.",
+            "price": 10
+        },
+        {
+            "name": "ciclon",
+            "desc": "enter desc",
+            "price": 15
+        }
+    ]
+}
