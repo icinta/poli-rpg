@@ -13,6 +13,7 @@
 * Create Player Object
 * Create NPC Object
 * Create Store Object
+* Create Battle Object
 * Create menus
 * TBA
 
