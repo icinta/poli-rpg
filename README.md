@@ -5,7 +5,7 @@
 * Download vscode
 * Get the vscode live share extension
 * Fork this repository
-* Clone poli-rpg repository
+* Clone your poli-rpg fork
 * Read this -> https://reflectoring.io/github-fork-and-pull/ (For updating fork from original repository a.k.a. this one)
 
 ## To-do (Project)
