@@ -2,6 +2,7 @@
     "player": {
         "name": "",
         "major": "",
+        "HP": 50,
         "lvl": 1,
         "exp": 0,
         "hp": 50,
@@ -42,12 +43,37 @@
         {
             "name": "usb",
             "desc": "Raises attack for 1 turn.",
-            "price": 10
+            "price": 10,
+            "type": "atk",
+            "amount": 3
         },
         {
             "name": "ciclon",
             "desc": "enter desc",
-            "price": 15
+            "price": 15,
+            "type": "atk",
+            "amount": 5
+        },
+        {
+            "name": "Hamburger & Fries",
+            "desc": "Raises HP by 10",
+            "price": 10,
+            "type": "hp",
+            "amount": 5
+        },
+        {
+            "name": "Potion 25 HP",
+            "desc": "Raises HP by 25",
+            "price": 30,
+            "type": "hp",
+            "amount": 25
+        },
+        {
+            "name": "VPN",
+            "desc": "Defense x2 for 1 turn",
+            "price": 5,
+            "type": "def",
+            "amount": 30
         }
     ]
 }

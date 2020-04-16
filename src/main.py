@@ -2,15 +2,16 @@ from hashlib import md5
 from termcolor import colored
 from os import system
 import json
-import time
-
-def c_print(a_string):
-    for ch in a_string:
-        print(ch,end="")
-        # if True:
-        #     time.sleep(0.1)
+from store import *
 
 def main():
-    c_print('Hello World!')
+   with open('ng.json','r') as f:
+      player_data = json.loads(f.read())
+
+      store = Store(player_data['player'],player_data['items'])
+   
+      store.printItems()
+
+   print('Hello World!')
 
 main()
