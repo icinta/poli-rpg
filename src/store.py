@@ -1,10 +1,17 @@
+
+
 class Store(object):
     '''
         Modifications to JSON:
             - Added items array and money to player
             - Added type (attack, defense, health) to items along with a respective amount 
-
+        To ADD: 
+            - Buy menu:
+                + How much money left?
+            
     '''
+
+    
 
     def __init__(self,obj,items):
         self.HP = obj['HP']
@@ -19,8 +26,12 @@ class Store(object):
         self.crit = obj['crit']
         self.items = items
 
+        self.printlist(self.items)
         #Print something like
         print("Hello  weary traveler, you look like you're in need of some materials...")
+        #Menu
+        print("What is it you desire: ")
+        self.display_items()
 
 
     
@@ -28,78 +39,93 @@ class Store(object):
         '''
             Look up player vlaues and suggest items depending on them
         '''
+    
+    def count_ocurrences(self,item):
+        return int(self.Pitems.count(item))
 
-    def printItems(self):
-        #Menu
-        print("What is it you desire: ")
+    def display_items(self):
+        print("\t0. Sell Item")
+        #Get items from store
         for i,elements in enumerate(self.items):
-            print("\t{} {}".format(i+1,elements['name']))
+            print("\t{}. {} - {} coins".format(i+1,elements['name'],elements['price']))
+
+        print("\t{}. Quit".format(len(self.items)+1))
         
         index = int(input("Choice: "))
         
-        check = lambda obj: obj[index-1]['type'] 
+        if index == len(self.items)+1:
+            return
+        elif self.purchase_item(self.items[index-1],index-1):
+            print("\n{} has been added to your inventory and you're left with {} coins: ".format(self.items[index-1]['name'],self.money))
+        elif index-1 == -1:
+            self.sell_item()
 
-        if check(self.items) == 'atk':
-            if self.purchaseAtk(self.items[index-1]):
-                print("{} has been added, your attack is now {}\n".format(self.items[index-1]['name'],self.attck))
-                '''
-        elif check(self.items) == 'def':
-            
-        elif check(self.items) == 'hp':
+        print("\nAnything else you desire:")
+        self.display_items()
 
-        elif check(self.items) == 'crit':
-                '''
 
-        
-        print(self.Pitems)
-
-    def purchaseAtk(self,item):
-        if self.money >= item['price']:
-            self.Pitems.append(item)        #Appending Item to players list
-            self.attck += item['amount']    #Adding to players attack level
-            self.money -= item['price']     #Subtracting respective amount for item to players bag
-            return True
-        else:
-            print('You dont have enough credits.')
+    
+    def purchase_item(self,item,index):
+        if index == -1:
             return False
-
-
-    def purchaseDefense(self,item):
-        if self.money >= item['price']:
-            self.Pitems.append(item)        #Appending Item to players list
-            self.defns += item['amount']    #Adding to players defense level
-            self.money -= item['price']     #Subtracting respective amount for item to players bag
-            return True
-        else:
-            print('You dont have enough credits.')
-            return False
-            
-    def purchaseHealth(self,item):
         if self.money >= item['price']:
             self.Pitems.append(item)
-            self.HP += item['amount']
             self.money -= item['price']
             return True
         else:
-            print('You dont have enough credits.')
+            print("Sorry, you still lack {} to purchase item.".format(item['price']-self.money))
             return False
 
 
+    def sell_item(self):
+        #Verify bag is not empty
+        if len(self.Pitems) == 0:
+            print("You don't have anything to sell!\n")
+        else:
+            print("What do you want to sell?")
 
+            #Remove Unique values from 
+            items = { each['name'] : each for each in self.Pitems }.values()
+            
+            #Print items
+            for i, element in enumerate(items):
+                print("\t{}. {} x{}".format(i+1,element['name'],self.count_ocurrences(element)))
+            
+            #Get index
+            index = int(input("Choice: "))
+
+            #Remove item per index
+            if self.remove(index-1,items):
+                #Slow print
+                print("Thanks, now you have {} gold coins".format(self.money))
+
+
+
+    def remove(self,index,items):
+        count = int(self.count_ocurrences(self.Pitems[index]))
+        #Verify input choice
+        if index+1 > len(items):
+            return False
         
-'''
-Attirbutes
-    potions - with different levels
-    stamina = pana o mana
-    Defense 
-        books - defenses ups
-        vpn
-        firewall
+        #Get number of items to remove
+        number = 0
+        if count > 1:
+            number = int(input("How many {}s do you want to sell? ".format(self.Pitems[index]['name'])))
+        else:
+            self.externimate(list(items),index)
 
-    
-    Attacks
-        pratice challenges - attacks ups
-    
-    HP - grub
+        #Look for element of choosing
+        for i in range(number):
+            self.externimate(list(items),index)
+        return True
 
-'''
+
+    def externimate(self,items,index):
+        for element in self.Pitems:
+            if element['name'] == items[index]['name']: #Conver to list to index it as json
+                price = element['price']
+                self.money += price
+                self.Pitems.remove(element)     #Remove element from bag and return to avoid eliminating more than one
+                return True
+
+
