@@ -1,5 +1,3 @@
-
-
 class Store(object):
     '''
         Modifications to JSON:
@@ -10,10 +8,7 @@ class Store(object):
                 + How much money left?
             
     '''
-
-    
-
-    def __init__(self,obj,items):
+    def __init__(self, obj, items):
         self.HP = obj['HP']
         self.name = obj['name']
         self.major = obj['major']
@@ -26,15 +21,13 @@ class Store(object):
         self.crit = obj['crit']
         self.items = items
 
-        self.printlist(self.items)
+        # self.printlist(self.items)
         #Print something like
         print("Hello  weary traveler, you look like you're in need of some materials...")
         #Menu
         print("What is it you desire: ")
         self.display_items()
 
-
-    
     def suggest(self):
         '''
             Look up player vlaues and suggest items depending on them
@@ -63,8 +56,6 @@ class Store(object):
         print("\nAnything else you desire:")
         self.display_items()
 
-
-    
     def purchase_item(self,item,index):
         if index == -1:
             return False
@@ -75,7 +66,6 @@ class Store(object):
         else:
             print("Sorry, you still lack {} to purchase item.".format(item['price']-self.money))
             return False
-
 
     def sell_item(self):
         #Verify bag is not empty
@@ -99,8 +89,6 @@ class Store(object):
                 #Slow print
                 print("Thanks, now you have {} gold coins".format(self.money))
 
-
-
     def remove(self,index,items):
         count = int(self.count_ocurrences(self.Pitems[index]))
         #Verify input choice
@@ -112,15 +100,14 @@ class Store(object):
         if count > 1:
             number = int(input("How many {}s do you want to sell? ".format(self.Pitems[index]['name'])))
         else:
-            self.externimate(list(items),index)
+            self.exterminate(list(items),index)
 
         #Look for element of choosing
         for i in range(number):
-            self.externimate(list(items),index)
+            self.exterminate(list(items),index)
         return True
 
-
-    def externimate(self,items,index):
+    def exterminate(self,items,index):
         for element in self.Pitems:
             if element['name'] == items[index]['name']: #Conver to list to index it as json
                 price = element['price']
@@ -128,4 +115,9 @@ class Store(object):
                 self.Pitems.remove(element)     #Remove element from bag and return to avoid eliminating more than one
                 return True
 
-
+# Testing
+def main():
+    with open('ng.json','r') as f:
+        data = json.loads(f.read())
+        store = Store(data['player'],data['items'])
+main()

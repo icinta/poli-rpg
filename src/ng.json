@@ -11,7 +11,7 @@
         "stamina": 100,
         "crit": 10,
         "money": 1000,
-        "items": []
+        "items": ["hockey stick", "calculator"]
     },
     "npc": {
         "Luis Ortiz": {

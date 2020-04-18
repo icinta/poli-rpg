@@ -16,6 +16,7 @@ class Player(object):
         self.exp_to_next_lvl = self.base_exp + self.lvl*10
         self.next_lvl_exp = self.exp_to_next_lvl
 
+    # Level Up Methods
     def tally_exp(self, exp_gain):
         self.exp += exp_gain
         print('{0} gained {1}! New exp {2}'.format(self.name, exp_gain, self.exp))
@@ -36,6 +37,14 @@ class Player(object):
         self.check_level_up()
         print('Total exp: {}'.format(self.exp))
 
+    def disp_items(self, msg="You have:"):
+        if len(self.items) == 0:
+            print("You don't have any items.")
+        else:
+            print(msg)
+            for i, item in enumerate(self.items):
+                print('\t{0}. {1} | {2} '.format(i, item['name'], item['desc']))
+
 # Testing
 def main():
     with open('../ng.json','r') as f:
@@ -44,4 +53,5 @@ def main():
 
     print('Current player level: {}'.format(player.lvl))
     player.add_exp(532)
+    player.disp_items()
 main()
