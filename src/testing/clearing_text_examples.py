@@ -32,3 +32,5 @@ for ch in text:
     subprocess.call(["xdotool", "type", ch])
     # increase or decrease the time below to type slower or faster
     time.sleep(0.1)
+
+input()
