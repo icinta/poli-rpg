@@ -11,6 +11,6 @@ def main():
       store = Store(player_data['player'],player_data['items'])
    
 
-   #print('Hello World!')
+   print('Hello World!')
 
 main()

@@ -5,14 +5,17 @@
         "HP": 50,
         "lvl": 1,
         "exp": 0,
+        "hp": 50,
         "atk": 5,
         "def": 5,
+        "stamina": 100,
         "crit": 10,
-        "items": [],
-        "money": 1000
+        "money": 1000,
+        "items": []
     },
     "npc": {
         "Luis Ortiz": {
+            "hp": 100,
             "atk": 15,
             "def": 20,
             "crit": 15,
