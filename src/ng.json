@@ -42,35 +42,40 @@
             "desc": "Raises attack for 1 turn.",
             "price": 10,
             "type": "atk",
-            "amount": 3
+            "amount": 3,
+            "count":1
         },
         {
             "name": "ciclon",
             "desc": "enter desc",
             "price": 15,
             "type": "atk",
-            "amount": 5
+            "amount": 5,
+            "count":1
         },
         {
             "name": "Hamburger & Fries",
             "desc": "Raises HP by 10",
             "price": 10,
             "type": "hp",
-            "amount": 5
+            "amount": 5,
+            "count":1
         },
         {
             "name": "Potion 25 HP",
             "desc": "Raises HP by 25",
             "price": 30,
             "type": "hp",
-            "amount": 25
+            "amount": 25,
+            "count":1
         },
         {
             "name": "VPN",
             "desc": "Defense x2 for 1 turn",
             "price": 5,
             "type": "def",
-            "amount": 30
+            "amount": 30,
+            "count":1
         }
     ]
 }

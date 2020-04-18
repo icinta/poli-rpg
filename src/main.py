@@ -10,7 +10,6 @@ def main():
 
       store = Store(player_data['player'],player_data['items'])
    
-      store.printItems()
 
    #print('Hello World!')
 
