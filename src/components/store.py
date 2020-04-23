@@ -9,16 +9,9 @@ class Store(object):
             
     '''
     def __init__(self, obj, items):
-        self.HP = obj['HP']
         self.name = obj['name']
-        self.major = obj['major']
         self.money = obj['money']
         self.Pitems = obj['items']
-        self.lvl = obj['lvl']
-        self.exp = obj['exp']
-        self.attck = obj['atk']
-        self.defns = obj['def']    
-        self.crit = obj['crit']
         self.items = items
 
         # self.printlist(self.items)

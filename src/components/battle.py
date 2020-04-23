@@ -99,12 +99,6 @@ class Battle(object):
 		self.player["HP"] -= self.npc["atk"]
 		self.npc["atk"] = self.npc["atk"] / self.npc["attacks"][randomInt]["atkmod"]
 
-
-
-		
-
-
-
 def main():
 	# player = 
 	# npc = 
